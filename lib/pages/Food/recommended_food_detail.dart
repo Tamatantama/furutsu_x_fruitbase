@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:furutsu_x_fruitbase/controllers/recommended_product_controller.dart';
 import 'package:furutsu_x_fruitbase/routes/routes_helper.dart';
+import 'package:furutsu_x_fruitbase/utils/app_constants.dart';
 import 'package:furutsu_x_fruitbase/utils/colors.dart';
 import 'package:furutsu_x_fruitbase/utils/dimensions.dart';
 import 'package:furutsu_x_fruitbase/widgets/Big_text.dart';
@@ -10,16 +12,14 @@ import 'package:furutsu_x_fruitbase/widgets/expendable_text.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-class RecommendedFoodDetail extends StatefulWidget {
-  const RecommendedFoodDetail({Key? key}) : super(key: key);
-
-  @override
-  State<RecommendedFoodDetail> createState() => _RecommendedFoodDetailState();
-}
-
-class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
+class RecommendedFoodDetail extends StatelessWidget {
+  final int pageId;
+  const RecommendedFoodDetail({Key? key, required this.pageId})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<RecommendedProductController>().recommendedProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       body: CustomScrollView(
@@ -43,7 +43,7 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
                 child: Center(
                   child: BigText(
                     size: Dimensions.font26,
-                    text: "Infuse Water",
+                    text: product.name!,
                   ),
                 ),
                 width: double.maxFinite,
@@ -60,8 +60,8 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
             backgroundColor: AppColors.yellowColor,
             expandedHeight: 300,
             flexibleSpace: FlexibleSpaceBar(
-              background: Image.asset(
-                "assets/image/logo.png",
+              background: Image.network(
+                AppConstants.BASE_URL + AppConstants.UPLOAD_URL + product.img!,
                 width: double.maxFinite,
                 fit: BoxFit.cover,
               ),
@@ -71,10 +71,7 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
               child: Column(
             children: [
               Container(
-                child: ExpendableText(
-                  text:
-                      "Salad buah enak rasanya bikin nagih kudu pesan sekarang, gaboleh nanti nanti pokoknya pesen sekarang juga ya ges ya Soalnya cuma terbatas bikinnya apalagi ini preorder tolong pesen secepatnya ya ges ya",
-                ),
+                child: ExpendableText(text: product.description!),
                 margin: EdgeInsets.only(
                     left: Dimensions.width20, right: Dimensions.width20),
               )
@@ -100,7 +97,7 @@ class _RecommendedFoodDetailState extends State<RecommendedFoodDetail> {
                     backgroundcColor: AppColors.mainColor,
                     icon: Icons.remove),
                 BigText(
-                  text: "Rp.15000 " + " X " + " 0",
+                  text: "Rp.${product.price!}K  X  0",
                   color: AppColors.mainBlackColor,
                   size: Dimensions.font26,
                 ),
