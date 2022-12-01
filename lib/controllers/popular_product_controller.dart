@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furutsu_x_fruitbase/controllers/cart_controller.dart';
+import 'package:furutsu_x_fruitbase/models/cart_model.dart';
 import 'package:furutsu_x_fruitbase/models/products_model.dart';
 import 'package:furutsu_x_fruitbase/utils/colors.dart';
 import 'package:get/get.dart';
@@ -93,5 +94,9 @@ class PopularProductController extends GetxController {
 
   int get totalItems {
     return _cart.totalItems;
+  }
+
+  List<CartModel> get getItems {
+    return _cart.getItems;
   }
 }

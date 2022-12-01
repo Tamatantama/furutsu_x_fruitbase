@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:furutsu_x_fruitbase/controllers/popular_product_controller.dart';
 import 'package:furutsu_x_fruitbase/pages/Food/popular_food_detail.dart';
 import 'package:furutsu_x_fruitbase/pages/Food/recommended_food_detail.dart';
+import 'package:furutsu_x_fruitbase/pages/cart/cart_page.dart';
 import 'package:furutsu_x_fruitbase/pages/home/food_page_body.dart';
 import 'package:furutsu_x_fruitbase/pages/home/main._food_page.dart';
 import 'package:furutsu_x_fruitbase/routes/routes_helper.dart';

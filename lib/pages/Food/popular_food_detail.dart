@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:furutsu_x_fruitbase/controllers/cart_controller.dart';
 import 'package:furutsu_x_fruitbase/controllers/popular_product_controller.dart';
+import 'package:furutsu_x_fruitbase/pages/cart/cart_page.dart';
 import 'package:furutsu_x_fruitbase/pages/home/main._food_page.dart';
 import 'package:furutsu_x_fruitbase/utils/app_constants.dart';
 import 'package:furutsu_x_fruitbase/utils/dimensions.dart';
@@ -63,11 +64,16 @@ class PopularFoodDetail extends StatelessWidget {
                             ? Positioned(
                                 right: 0,
                                 top: 0,
-                                child: AppIcon(
-                                    icon: Icons.circle,
-                                    size: 20,
-                                    iconColor: Colors.transparent,
-                                    backgroundcColor: AppColors.mainColor),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => CartPage);
+                                  },
+                                  child: AppIcon(
+                                      icon: Icons.circle,
+                                      size: 20,
+                                      iconColor: Colors.transparent,
+                                      backgroundcColor: AppColors.mainColor),
+                                ),
                               )
                             : Container(),
                         Get.find<PopularProductController>().totalItems >= 1
