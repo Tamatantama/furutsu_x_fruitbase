@@ -47,7 +47,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                         children: [
                           GestureDetector(
                               onTap: () {
-                                Get.to(() => CartPage());
+                                Get.toNamed(RouteHelper.getCartPage());
                               },
                               child: AppIcon(
                                   icon: Icons.shopping_cart_checkout_outlined)),
@@ -57,7 +57,7 @@ class RecommendedFoodDetail extends StatelessWidget {
                                   top: 0,
                                   child: GestureDetector(
                                     onTap: () {
-                                      Get.to(() => CartPage());
+                                      Get.toNamed(RouteHelper.getCartPage());
                                     },
                                     child: AppIcon(
                                         icon: Icons.circle,

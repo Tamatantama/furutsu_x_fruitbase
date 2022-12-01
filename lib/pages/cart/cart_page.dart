@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:furutsu_x_fruitbase/controllers/cart_controller.dart';
 import 'package:furutsu_x_fruitbase/pages/home/main._food_page.dart';
+import 'package:furutsu_x_fruitbase/routes/routes_helper.dart';
 import 'package:furutsu_x_fruitbase/utils/app_constants.dart';
 import 'package:furutsu_x_fruitbase/utils/colors.dart';
 import 'package:furutsu_x_fruitbase/utils/dimensions.dart';
@@ -34,7 +35,7 @@ class CartPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.to(() => MainFoodPage());
+                      Get.toNamed(RouteHelper.getInitial());
                     },
                     child: AppIcon(
                       icon: Icons.home_outlined,

@@ -29,6 +29,10 @@ class CartController extends GetxController {
           time: DateTime.now().toString(),
         );
       });
+
+      if (totalQuantity <= 0) {
+        _items.remove(product.id);
+      }
     } else {
       if (quantity > 0) {
         _items.putIfAbsent(product.id!, () {
@@ -44,10 +48,6 @@ class CartController extends GetxController {
             time: DateTime.now().toString(),
           );
         });
-
-        if (totalQuantity <= 0) {
-          _items.remove(product.id);
-        }
       } else {
         Get.snackbar(
           "Item count",
