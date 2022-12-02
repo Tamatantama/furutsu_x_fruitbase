@@ -5,6 +5,7 @@ import 'package:furutsu_x_fruitbase/pages/Food/recommended_food_detail.dart';
 import 'package:furutsu_x_fruitbase/pages/cart/cart_page.dart';
 import 'package:furutsu_x_fruitbase/pages/home/food_page_body.dart';
 import 'package:furutsu_x_fruitbase/pages/home/main._food_page.dart';
+import 'package:furutsu_x_fruitbase/pages/splash/splash_page.dart';
 import 'package:furutsu_x_fruitbase/routes/routes_helper.dart';
 import 'package:get/get.dart';
 import 'controllers/recommended_product_controller.dart';
@@ -22,14 +23,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularProductController>().getPopularProductList();
-    Get.find<RecommendedProductController>().getRecommendedProductList();
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Furutsu x FruitBased',
-      //home: MainFoodPage(),
-      initialRoute: RouteHelper.getInitial(),
-      getPages: RouteHelper.routes,
-    );
+    return GetBuilder<PopularProductController>(builder: (_) {
+      return GetBuilder<RecommendedProductController>(builder: (_) {
+        return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Furutsu x FruitBased',
+          //home: SplashScreen(),
+          initialRoute: RouteHelper.getSplashPage(),
+          getPages: RouteHelper.routes,
+        );
+      });
+    });
   }
 }
